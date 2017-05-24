@@ -1,6 +1,17 @@
 "use strict";
 
+console.log("main.js");
+
 let $ = require('jquery'),
-    db = require("./db-interaction"),
-    templates = require("./dom-builder"),
-    user = require("./user");
+    ds = require("./data-station");
+    //templates = require("./DOM-builder"),
+    //user = require("./user");
+
+function loadMoviesToDom () {
+	console.log("loading movies");
+
+
+}
+
+
+module.exports = loadMoviesToDom;
