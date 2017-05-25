@@ -15,7 +15,7 @@ function getFBKey() {
  function getMovieKey() {
    return {
      apiKey: "47aba330717dafc42c10c5b12ee7923a",
-     databaseURL: "https://api.themoviedb.org/3/"
+     databaseURL: "https://api.themoviedb.org/3"
  	};
  }
 
