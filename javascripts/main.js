@@ -10,7 +10,7 @@ let $ = require('jquery'),
 
 function loadMoviesToDom (movieData) {
 	console.log("loading movies");
-	DOM.searchMovies(movieData.results);
+	DOM.matchMovies(movieData.results);
 }
 
 $("#untracked").click( () => {
@@ -26,7 +26,7 @@ $("#input").keyup(function(e) {
 	if (e.keyCode === 13){
 		dataStation.getMovies()
 		.then(function(movieData){
-			DOM.searchMovies(movieData);
+			DOM.matchMovies(movieData);
 		});
 	}
 });

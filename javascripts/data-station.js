@@ -8,7 +8,6 @@ let $ = require('jquery'),
 	firebase = require("./firebaseConfig"),
 	key = require("./fb-getter"),
 	main = require("./main"),
-	DOM = require("./DOM-builder"),
 	movieKey = key.getMovieKey(),
 	apiKey = movieKey.apiKey,
 	databaseURL = movieKey.databaseURL;
@@ -36,7 +35,7 @@ function getMovies () {
 }
 
  //get new movie credits from movie db api
-function getNewMoviesCredits(movieId, index) {
+function getNewMoviesCredits(movieId) {
 	return new Promise(function(resolve,reject){
 		$.ajax({
 			url:`${databaseURL}/movie/${movieId}/credits?api_key=${apiKey}&language=en-US&page=1&include_adult=false`
@@ -120,8 +119,7 @@ module.exports = {
   getMyMovies,//query firebase
   addMovie,//add to watchlist
   deleteMovie, //delete from firebase
-  setRating //toggle boolean for watched
-};
+  setRating};
 
 
 
