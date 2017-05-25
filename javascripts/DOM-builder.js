@@ -56,4 +56,4 @@ function matchActors(actors, movies) {
   showSearchedMovies(movies);
 }
 
-module.exports = {searchMovies};
+module.exports = {matchMovies};
