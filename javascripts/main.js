@@ -17,6 +17,7 @@ $("#untracked").click( () => {
 	ds.search($("#input").val());
 	console.log($("#input").val());
 });
+
 $("#untracked").click( () => {
 	ds.search($("#input").val());
 });
@@ -38,7 +39,9 @@ $("#auth-btn").click(function(){
   .then(function(result){
     console.log("result from login", result.user.uid);
     user.setUser(result.user.uid);
-    loadMoviesToDom();
+    //let currentUser = user.getUser();
+    //loadMoviesToDom(currentUser);
+    $("#mainContainer").removeClass("hide");
     $("#auth-btn").addClass("hide");
     $("#logout").removeClass("hide");
 
@@ -50,6 +53,9 @@ $("#logout").click(function(){
    user.logOut()
    .then(function(result){
      console.log("you have logged out");
+     $("#auth-btn").removeClass("hide");
+     $("#logout").addClass("hide");
+     $("#mainContainer").addClass("hide");
    });
  });
 
