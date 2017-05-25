@@ -6,13 +6,18 @@
 
 let $ = require('jquery'),
 	firebase = require("./firebaseConfig"),
-	main = require("./main");
+	main = require("./main"),
+	DOM = require("./DOM-builder");
 
 
 $("#input").keyup(function(e) {
 	if (e.keyCode === 13){
 		getMovies()
-		.then(loadMoviesToDom);
+		.then(function(movieData){
+			DOM.showSearchedMovies(movieData.results);
+		}).then(function(movieData){
+			DOM.showActors(movieData);
+		});
 	}
 });
 
@@ -31,9 +36,27 @@ function getMovies () {
 		}).fail(function(error){
 			reject(error);
 		});
+		//getActors();
 	});
 }
 
+// function getActors () {
+// 	let id =
+// 	return new Promise (function(resolve, reject){
+// 		$.ajax({
+// 			url: `https://api.themoviedb.org/3/movie/${id}/credits?api_key=47aba330717dafc42c10c5b12ee7923a`
+// 		}).done(function(actorData){
+// 			resolve(actorData);
+// 			console.log(actorData);
+// 		}).fail(function(error){
+// 			reject(error);
+// 		});
+// 	});
+// }
 
 
 module.exports = {getMovies};
+
+
+
+
