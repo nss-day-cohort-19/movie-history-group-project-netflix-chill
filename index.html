@@ -8,15 +8,18 @@
 <body>
 		<nav class="navbar row">
 			<input class="col s7 offset-s1" type="text" id="input" name="inputbox" placeholder="Search Movies">
-			<div class="col 2s" id="auth-btn"><a href="#">LogIn/Register/LogOut</a></div>
+			<div class="col 2s" id="auth-btn"><a href="#" title="">LogIn</a></div>
+          	<div  class="hide" id="logout"><a href="#" title="">LogOut</a></div>
 		</nav>
-
-		<div class="container">
-			<div class="row">
-				<a id="untracked" class="waves-effect waves-light btn red">Show Untracked</a>
-				<a id="unwatched" class="waves-effect waves-light btn red">Show Unwatched</a>
-				<a id="watched" class="waves-effect waves-light btn red">Show Watched</a>
+		<div id="welcome"><h1>Welcome to this movie history thing we made</h1></div>
+			<div id="mainContainer" class="container">
+				<div class="row">
+					<a id="untracked" class="waves-effect waves-light btn red">Show Untracked</a>
+					<a id="unwatched" class="waves-effect waves-light btn red">Show Unwatched</a>
+					<a id="watched" class="waves-effect waves-light btn red">Show Watched</a>
 			</div>
+			  <div id="movieDiv" class="row"></div>
+		</div>
 		<!--rating bar scroller -->
 			<form action="#">
 				<p class="range-field row">
