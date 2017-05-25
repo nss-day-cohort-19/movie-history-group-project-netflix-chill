@@ -1,11 +1,5 @@
 "use strict";
 
-// function getMovieKey() {
-//   return {
-//     apiKey: "47aba330717dafc42c10c5b12ee7923a",
-//     databaseURL: "https://api.themoviedb.org/3/"
-// 	};
-// }
 
 function getFBKey() {
   return {
@@ -18,4 +12,11 @@ function getFBKey() {
   };
 }
 
-module.exports = getFBKey;
+ function getMovieKey() {
+   return {
+     apiKey: "47aba330717dafc42c10c5b12ee7923a",
+     databaseURL: "https://api.themoviedb.org/3/"
+ 	};
+ }
+
+module.exports = {getFBKey, getMovieKey};
