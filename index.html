@@ -3,7 +3,8 @@
 <head>
 	<title>Netflix & Chill</title>
 	<link rel="stylesheet" href="lib/node_modules/materialize-css/dist/css/materialize.min.css">
-  	<link rel="stylesheet" href="css/main.css">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="css/main.css">
 </head>
 <body>
 		<nav class="navbar row">
@@ -11,6 +12,13 @@
 			<div class="col 2s" id="auth-btn"><a href="#" title="">LogIn</a></div>
           	<div  class="hide" id="logout"><a href="#" title="">LogOut</a></div>
 		</nav>
+    <div class="col s12">
+		<ul class="tabs row">
+		  <li class="tab col m2"><a>Show Untracked</a></li>
+		  <li class="tab col m2"><a>Show Unwatched</a></li>
+		  <li class="tab col m2"><a>Show Watched</a></li>
+		</ul>
+    </div>
 		<div id="welcome"><h1>Welcome to this movie history thing we made</h1></div>
 			<div id="mainContainer" class="container hide">
 				<div class="row">
@@ -18,7 +26,7 @@
 					<a id="unwatched" class="waves-effect waves-light btn red">Show Unwatched</a>
 					<a id="watched" class="waves-effect waves-light btn red">Show Watched</a>
 			</div>
-			  <div id="movieDiv" class="row"></div>
+			  <div class="containers row"></div>
 		</div>
 		<!--rating bar scroller -->
 			<form action="#">
@@ -28,8 +36,8 @@
 			</form>
 		</div>
 
-
-
+		<script type='text/javascript' src='lib/node_modules/jquery/dist/jquery.min.js'></script>
+		<script type='text/javascript' src='lib/node_modules/materialize-css/dist/js/materialize.min.js'></script>
 		<script type='text/javascript' src='dist/app.js'></script>
 </body>
 </html>
