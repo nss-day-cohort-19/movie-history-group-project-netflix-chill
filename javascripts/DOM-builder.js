@@ -1,34 +1,51 @@
 "use strict";
 // This module only cares about the data it receives. It doesn't have to know about where the data comes from.
 
-let $ = require('jquery');
+let $ = require('jquery'),
+	dataStation = require("./data-station");
 console.log("DOM builder");
 
-
 function showSearchedMovies(movieList) {
-	console.log("showSearchedMovies", movieList.length);
-	  let mainDiv = $(".container");
-	  let actorArray = [];
-	  for (var i = 0; i < movieList.length; i++){
-
-	  mainDiv.append(`<div class="row">
-					<div class="col s4">${movieList[i].title}</div>
-					<div class="col s4">${movieList[i].release_date}</div>
-					</div>`);
-
-	  actorArray.push(`${movieList[i].id}`);
+	let mainDiv = $(".container");
+	var actors = {};
+	for (var i = 0; i < movieList.length; i++){
+		mainDiv.append(`<div class="row">
+			<div class="col s4">${movieList[i].title}</div>
+			<div class="col s4">${movieList[i].release_date}</div>
+			</div>`);
+		dataStation.getNewMoviesCredits(movieList[i].id).
+		then(
+			(data) => {
+				var actorObj = {};
+				for(let j = 0; j < 3; j++) {
+					if(data.cast[j]){
+						let d = data.cast[j]; //i like to shorten this kind of stuff
+						actorObj[j] = {"part": d.character, "name": d.name};
+					}
+				}
+				actors[data.id] = actorObj;
+				if(data.id == movieList[i - 1].id) {
+					matchActors(actors, movieList);
+				}
+			},
+			() => {console.log("error");}
+		);
 	}
+}
 
-	  console.log("actorArray", actorArray);
+function matchActors(actors, movies) {
+	for(let m = 0; m < movies.length; m++) {
+		movies[m].actorList = actors[movies[m].id];
+	}
+	console.log(movies);
 }
 
 function showActors(actorList) {
-	console.log("showSearchedMovies");
-	  let row = $(".row");
-	  for (var i = 0; i < actorList.length; i++){
+	//   let row = $(".row");
+	//   // for (var i = 0; i < actorList.length; i++){
 
-	  row.append(`<div class="col s4">${actorList[i].name}</div>`);
-	}
+	//   // row.append(`<div class="col s4">${actorList[i].name}</div>`);
+	// }
 }
 
 
@@ -62,7 +79,7 @@ function showActors(actorList) {
 
 
 
-module.exports = {showSearchedMovies};
+module.exports = {showSearchedMovies, showActors};
 
 
 
