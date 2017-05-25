@@ -1,5 +1,5 @@
 "use strict";
-
+console.log("data-station.js");
 // This module has no knowledge of the DOM, or where the data goes after it is fetched from Firebase.
 // It is only concerned with getting and setting data in the db
 
@@ -55,7 +55,24 @@ function getMovies () {
 // }
 
 
-module.exports = {getMovies};
+
+function addToWatchlist(movieObject){
+	console.log("movieObject", movieObject);
+	return new Promise(function(resolve, reject){
+		$.ajax({
+			url:`${firebase.getFBsettings().databaseURL}/movies.json`,
+			type: 'POST',
+			data: JSON.stringify(movieObject),
+			dataType: 'json'
+		}).done(function(movieId){
+			resolve(movieId);
+			console.log("movieId", movieId);
+		});
+	});
+}
+
+
+module.exports = {getMovies, addToWatchlist};
 
 
 
