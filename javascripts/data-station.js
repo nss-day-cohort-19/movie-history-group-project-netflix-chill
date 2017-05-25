@@ -9,18 +9,6 @@ let $ = require('jquery'),
 	main = require("./main"),
 	DOM = require("./DOM-builder");
 
-
-$("#input").keyup(function(e) {
-	if (e.keyCode === 13){
-		getMovies()
-		.then(function(movieData){
-			DOM.showSearchedMovies(movieData.results);
-		}).then(function(movieData){
-			DOM.showActors(movieData);
-		});
-	}
-});
-
 function getMovies () {
 	let inpValue = $("#input").val();
 	console.log(inpValue);
