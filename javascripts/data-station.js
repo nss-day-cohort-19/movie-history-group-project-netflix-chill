@@ -8,9 +8,8 @@ let $ = require('jquery'),
 	firebase = require("./firebaseConfig"),
 	key = require("./fb-getter"),
 	main = require("./main"),
-	DOM = require("./DOM-builder");
-
-let movieKey = key.getMovieKey(),
+	DOM = require("./DOM-builder"),
+	movieKey = key.getMovieKey(),
 	apiKey = movieKey.apiKey,
 	databaseURL = movieKey.databaseURL;
 
