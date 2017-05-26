@@ -14,13 +14,25 @@ function loadMoviesToDom (movieData) {
 	DOM.matchMovies(movieData.results);
 }
 
-$("#untracked").click( () => {
-	ds.search($("#input").val());
-	console.log($("#input").val());
-});
+function buildMovieObj(id) {
+    let movieObj = {
+    name: $(id).data("title"),
+    actors: $(id).data("actors"),
+    year: $(id).data("year"),
+    picture: $(id).data("picture"),
+    watched: false,
+    rating: 0,
+    uid: user.getUser(),
+    movieId: $(id).data("id")
+  };
+  return movieObj;
+}
 
 $("#untracked").click( () => {
-	ds.search($("#input").val());
+	dataStation.getMovies()
+	.then(function(movieData){
+		DOM.matchMovies(movieData);
+	});
 });
 
 $("#input").keyup(function(e) {
@@ -55,6 +67,17 @@ $("#logout").click(function(){
    });
  });
 $('#thingsToHide').hide();
+
+$(".delete-btn").on("click", (event) => {
+	dataStation.deleteMovie($(this).data("delete-id")).
+	then( /*Load movies to dom again */);
+});
+
+$(".addToList").on("click", (event) => {
+	let movie = buildMovieObj($(this).data("id"));
+	dataStation.addMovie(movie).
+	then( /*Load movies to dom again */);
+});
 
 $(document).on('click', '.star', function(e) {
     // console.log(e.target);
