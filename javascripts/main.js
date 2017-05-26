@@ -9,11 +9,6 @@ let $ = require('jquery'),
     user = require("./user"),
     rate = require('./rating');
 
-function loadMoviesToDom (movieData) {
-	console.log("loading movies");
-	DOM.matchMovies(movieData.results);
-}
-
 function buildMovieObj(id) {
     let movieObj = {
     name: id.data("title"),
@@ -92,6 +87,3 @@ $(document).on('click', '#showUnwatched', function(){
     }
     );
 });
-
-
-module.exports = {loadMoviesToDom};
