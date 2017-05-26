@@ -11,19 +11,21 @@
 <body>
     <div id="megaWrapper">
         <nav id="searchNav">
-            <div class="nav-wrapper">
-                <div class="input-field">
+            <div class="nav-wrapper row">
+                <div class="input-field col s7">
                     <input id="input" type="search" required>
                     <label class="label-icon" for="search"><i class="material-icons">search</i></label>
-                    <i class="material-icons">close</i>
-                </div>
-            </div>
-        </nav>
-        <i class="medium material-icons dropdown-button right" data-activates='dropdown1'>perm_identity</i>
+                    </div><div>
+                   <!--  <i class="material-icons">close</i> -->
+                    <i class="medium material-icons dropdown-button right" data-activates='dropdown1'>perm_identity</i>
         <ul id='dropdown1' class='dropdown-content'>
             <li id="auth-btn"><a href="#!">Log in</a></li>
             <li id="logout"><a href="#!">Log out</a></li>
-        </ul>
+        </ul></div>
+                </div>
+            </div>
+        </nav>
+        
         <div id="welcome" class="col s12 m5">
             <div class="card-panel">
                 <span><h4>Welcome to movie history</h4></span>

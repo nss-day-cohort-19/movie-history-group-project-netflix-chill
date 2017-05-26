@@ -27,8 +27,8 @@
 
 // navbar
 #searchNav {
-	width: 1200px;
-	margin: 30px 0 0 100px;
+	// width: 1200px;
+	// margin: 30px 0 0 100px;
 	.nav-wrapper {
   		background-color: #102031;
 }
@@ -45,7 +45,8 @@
 	border-radius: 10px;
 }
 .dropdown-button {
-	margin: -60px 40px 0 0;
+	// margin: -60px 40px 0 0;
+	padding-right: 1em;
 	cursor: pointer;
 	color: #01C46D;
 }
