@@ -6,7 +6,7 @@ let $ = require('jquery');
 
 function showSearchedMovies(movieList) {
 	console.log("showSearchedMovies", movieList.length);
-	  let mainDiv = $(".container");
+	  let mainDiv = $(".containers");
 	  let actorArray = [];
 	  for (var i = 0; i < movieList.length; i++){
 			if (movieList[i].poster_path !== null) {
@@ -16,7 +16,9 @@ function showSearchedMovies(movieList) {
 												<div class="card-content">
 												<li>${movieList[i].title}</li>
 												<li>${movieList[i].release_date}</li>
-												<a class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">add</i></a> </div>
+												<div id="watchlistDiv">
+													<a class="unwatched">Add to Watchlist</a>
+												</div>
 												</div>`);
 			  actorArray.push(`${movieList[i].id}`);
 			}
@@ -25,13 +27,13 @@ function showSearchedMovies(movieList) {
 	  console.log("actorArray", actorArray);
 }
 
-function showActors(actorList) {
-	console.log("showSearchedMovies");
-	  let row = $(".row");
-	  for (var i = 0; i < actorList.length; i++){
+// function showActors(actorList) {
+// 	console.log("showSearchedMovies");
+// 	  let row = $(".row");
+// 	  for (var i = 0; i < actorList.length; i++){
 
-	  row.append(`<div class="col s4">${actorList[i].name}</div>`);
-	}
-}
+// 	  row.append(`<div class="col s4">${actorList[i].name}</div>`);
+// 	}
+// }
 
 module.exports = {showSearchedMovies};

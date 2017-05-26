@@ -1,0 +1,25 @@
+
+// Rating Styling
+.rating > span:hover:before {
+   content: "\2605";
+   position: absolute;
+   color: gold;
+}
+.rating {
+  unicode-bidi: bidi-override;
+  direction: rtl;
+}
+.rating > span:hover:before,
+.rating > span:hover ~ span:before {
+   content: "\2605";
+   position: absolute;
+   color: gold;
+}
+.ratedStar {
+  color: gold;
+}
+
+.unwatched {
+  cursor: pointer;
+}
+// end Rating Styling

@@ -3,6 +3,7 @@
 <head>
 	<title>Netflix & Chill</title>
 	<link rel="stylesheet" href="lib/node_modules/materialize-css/dist/css/materialize.min.css">
+	<link href=“https://fonts.googleapis.com/icon?family=Material+Icons” rel=“stylesheet”>
   	<link rel="stylesheet" href="css/main.css">
 </head>
 <body>
@@ -18,18 +19,10 @@
 					<a id="unwatched" class="waves-effect waves-light btn red">Show Unwatched</a>
 					<a id="watched" class="waves-effect waves-light btn red">Show Watched</a>
 			</div>
-			  <div id="movieDiv" class="row"></div>
-		</div>
-		<!--rating bar scroller -->
-			<form action="#">
-				<p class="range-field row">
-					<input class="col s8" type="range" id="ratingSlider" min="1" max="11" />
-				</p>
-			</form>
+			  <div id="movieDiv" class="containers row"></div>
 		</div>
 
-
-
+		<script type='text/javascript' src='javascripts/rating.js'></script>
 		<script type='text/javascript' src='dist/app.js'></script>
 </body>
 </html>
