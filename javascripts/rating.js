@@ -2,68 +2,52 @@
 
 let $ = require('jquery');
 
-function addStars(event) {
-  console.log('clicked add to watchlist');
-  event.target.closest('div').innerHTML = zeroRating;
-}
-
 function starStuff(e) {
   switch(e.id) {
     case 'oneStar':
       console.log('One Star Rating', e);
       e.closest('div').innerHTML = oneStarRating;
-      break;
+      return 1;
     case 'twoStar':
       console.log('Two Star Rating');
       e.closest('div').innerHTML = twoStarRating;
-      break;
+      return 2;
     case 'threeStar':
       console.log('Three Star Rating');
       e.closest('div').innerHTML = threeStarRating;
-      break;
+      return 3;
     case 'fourStar':
       console.log('Four Star Rating');
       e.closest('div').innerHTML = fourStarRating;
-      break;
+      return 4;
     case 'fiveStar':
       console.log('Five Star Rating');
       e.closest('div').innerHTML = fiveStarRating;
-      break;
+      return 5;
     case 'sixStar':
       console.log('Six Star Rating');
       e.closest('div').innerHTML = sixStarRating;
-      break;
+      return 6;
     case 'sevenStar':
       console.log('Seven Star Rating');
       e.closest('div').innerHTML = sevenStarRating;
-      break;
+      return 7;
     case 'eightStar':
       console.log('Eight Star Rating');
       e.closest('div').innerHTML = eightStarRating;
-      break;
+      return 8;
     case 'nineStar':
       console.log('Nine Star Rating');
       e.closest('div').innerHTML = nineStarRating;
-      break;
+      return 9;
     case 'tenStar':
       console.log('Ten Star Rating');
       e.closest('div').innerHTML = tenStarRating;
-      break;
+      return 10;
 
   }
 }
-let zeroRating = `<div class="rating">
-										<span class="star" id="tenStar">☆</span>
-                    <span class="star" id="nineStar">☆</span>
-                    <span class="star" id="eightStar">☆</span>
-                    <span class="star" id="sevenStar">☆</span>
-                    <span class="star" id="sixStar">☆</span>
-                    <span class="star" id="fiveStar">☆</span>
-                    <span class="star" id="fourStar">☆</span>
-                    <span class="star" id="threeStar">☆</span>
-                    <span class="star" id="twoStar">☆</span>
-                    <span class="star" id="oneStar">☆</span>
-									</div>`;
+
 let oneStarRating = `<span class="star" id="tenStar">☆</span><span class="star" id="nineStar">☆</span><span class="star" id="eightStar">☆</span><span class="star" id="sevenStar">☆</span><span class="star" id="sixStar">☆</span><span class="star" id="fiveStar">☆</span><span class="star" id="fourStar">☆</span><span class="star" id="threeStar">☆</span><span class="star" id="twoStar">☆</span><span class="star ratedStar" id="oneStar">★</span>`;
 let twoStarRating = `<span class="star" id="tenStar">☆</span><span class="star" id="nineStar">☆</span><span class="star" id="eightStar">☆</span><span class="star" id="sevenStar">☆</span><span class="star" id="sixStar">☆</span><span class="star" id="fiveStar">☆</span><span class="star" id="fourStar">☆</span><span class="star" id="threeStar">☆</span><span class="star ratedStar" id="twoStar">★</span><span class="star ratedStar" id="oneStar">★</span>`;
 let threeStarRating = `<span class="star" id="tenStar">☆</span><span class="star" id="nineStar">☆</span><span class="star" id="eightStar">☆</span><span class="star" id="sevenStar">☆</span><span class="star" id="sixStar">☆</span><span class="star" id="fiveStar">☆</span><span class="star" id="fourStar">☆</span><span class="star ratedStar" id="threeStar">★</span><span class="star  ratedStar" id="twoStar">★</span><span class="star ratedStar" id="oneStar">★</span>`;
@@ -75,4 +59,4 @@ let eightStarRating = `<span class="star" id="tenStar">☆</span><span class="st
 let nineStarRating = `<span class="star" id="tenStar">☆</span><span class="star ratedStar" id="nineStar">★</span><span class="star ratedStar" id="eightStar">★</span><span class="star ratedStar" id="sevenStar">★</span><span class="star ratedStar" id="sixStar">★</span><span class="star ratedStar" id="fiveStar">★</span><span class="star ratedStar" id="fourStar">★</span><span class="star ratedStar" id="threeStar">★</span><span class="star  ratedStar" id="twoStar">★</span><span class="star ratedStar" id="oneStar">★</span>`;
 let tenStarRating = `<span class="star ratedStar" id="tenStar">★</span><span class="star ratedStar" id="nineStar">★</span><span class="star ratedStar" id="eightStar">★</span><span class="star ratedStar" id="sevenStar">★</span><span class="star ratedStar" id="sixStar">★</span><span class="star ratedStar" id="fiveStar">★</span><span class="star ratedStar" id="fourStar">★</span><span class="star ratedStar" id="threeStar">★</span><span class="star ratedStar" id="twoStar">★</span><span class="star ratedStar" id="oneStar">★</span>`;
 
-module.exports = {starStuff, addStars};
+module.exports = {starStuff};

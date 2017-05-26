@@ -81,7 +81,7 @@ function showUserMovies(data) {
 										<li>${data[i].name}</li>
 										<li>${data[i].year}</li>
 										<li>${data[i].actors}</li>
-										<div class="rating" data-title= "${data[i].name}" data-actors= "${data[i].actors}" data-year= "${data[i].year}" data-picture= "${data[i].picture}" data-id= ${data[i].id}>
+										<div class="rating" data-i= "${i}">
 										<span class="star" id="tenStar">☆</span>
                     <span class="star" id="nineStar">☆</span>
                     <span class="star" id="eightStar">☆</span>
