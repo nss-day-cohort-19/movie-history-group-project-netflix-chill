@@ -76,18 +76,23 @@ $(".delete-btn").on("click", (event) => {
 
 
 $(document).on('click', '.star', function(event) {
-    // console.log(e.target);
-    rate.starStuff();
+
+    let movie = {};
+    let movieId = $(this).closest('div').data('i');
+    movie.watched = true;
+    movie.rating = rate.starStuff(event.target);
+    dataStation.setRating(movieId, movie).then( function(data) {
+        console.log(data);
+    });
 });
 $(document).on('click', '.unwatched', function(event) {
     let movie = buildMovieObj($(this));
-	// rate.addStars(event);
 	dataStation.addMovie(movie);
     $(event.target).closest('.deleter').remove();
 	// then( /*Load movies to dom again */);
 });
 $(document).on('click', '#showUnwatched', function(){
-    dataStation.getMyMovies(user.getUser()).then(function(data) {
+    dataStation.getMyMovies().then(function(data) {
         return DOM.showUserMovies(data);
     }
     );

@@ -10,6 +10,7 @@ let $ = require('jquery'),
 	main = require("./main"),
 	movieKey = key.getMovieKey(),
 	apiKey = movieKey.apiKey,
+	user = require('./user'),
 	databaseURL = movieKey.databaseURL;
 
 
@@ -47,10 +48,10 @@ function getNewMoviesCredits(movieId) {
 }
 
 //get my movies from firebase
-function getMyMovies(user) {
+function getMyMovies() {
 	return new Promise(function(resolve,reject){
 		$.ajax({
-			url:`${firebase.getFBsettings().databaseURL}/movies.json?orderBy="uid"&equalTo="${user}"`
+			url:`${firebase.getFBsettings().databaseURL}/movies.json?orderBy="uid"&equalTo="${user.getUser()}"`
 		}).done(function(movieData){
 			resolve(movieData);
 		});
@@ -101,8 +102,9 @@ function getMovie(movieId) {
 // GET - Requests/read data from a specified resource
 // PUT - Update data to a specified resource. Takes two parameters.
 //PATCH - update only the changes
-function setRating(movieObj, movieId, rating) {
+function setRating(movieId, movieObj) {
 	return new Promise(function(resolve,reject){
+		console.log(movieObj);
 		$.ajax({
 			url:`${firebase.getFBsettings().databaseURL}/movies/${movieId}.json`,
 			type:'PATCH',

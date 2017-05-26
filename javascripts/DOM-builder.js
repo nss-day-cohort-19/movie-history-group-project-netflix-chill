@@ -73,7 +73,7 @@ function showSearchedMovies (movieList) {
 function showUserMovies(data) {
 	console.log(data);
 	let mainDiv = $(".containers");
-	mainDiv.html();
+	mainDiv.html("");
 	for(let i in data) {
 
 		mainDiv.append(`<div class="col lg2 m4 s6 deleter">
@@ -83,7 +83,7 @@ function showUserMovies(data) {
 										<li>${data[i].name}</li>
 										<li>${data[i].year}</li>
 										<li>${data[i].actors}</li>
-										<div class="rating" data-title= "${data[i].name}" data-actors= "${data[i].actors}" data-year= "${data[i].year}" data-picture= "${data[i].picture}" data-id= ${data[i].id}>
+										<div class="rating" data-i= "${i}">
 										<span class="star" id="tenStar">☆</span>
                     <span class="star" id="nineStar">☆</span>
                     <span class="star" id="eightStar">☆</span>
