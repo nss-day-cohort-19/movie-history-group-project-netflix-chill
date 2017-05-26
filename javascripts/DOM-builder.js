@@ -39,7 +39,10 @@ function matchActors(actors, movies) {
 		movies[m].actorList = actors[movies[m].id];
 	}
 	console.log(movies);
-  showSearchedMovies(movies);
+	dataStation.compareMovies(movies).
+	then(
+  		showSearchedMovies
+  	);
 }
 function showSearchedMovies (movieList) {
 

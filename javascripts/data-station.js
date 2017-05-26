@@ -9,6 +9,7 @@ let $ = require('jquery'),
 	key = require("./fb-getter"),
 	main = require("./main"),
 	movieKey = key.getMovieKey(),
+	user = require("./user"),
 	apiKey = movieKey.apiKey,
 	databaseURL = movieKey.databaseURL;
 
@@ -50,7 +51,7 @@ function getNewMoviesCredits(movieId) {
 function getMyMovies(user, searchVal) {
 	return new Promise(function(resolve,reject){
 		$.ajax({
-			url:`${firebase.getFBsettings().databaseURL}/movies.json?orderBy="uid"&equalTo="${user}"`
+			url:`${firebase.getFBsettings().databaseURL}/movies.json?orderBy="uid"&equalTo="${user.getUser()}"`
 		}).done(function(movieData){
 			resolve(movieData);
 		});
@@ -113,13 +114,33 @@ function setRating(movieObj, movieId, rating) {
 	});
 }
 
+function compareMovies(newMovies) {
+	return new Promise(function(resolve, reject) {
+		$.ajax({
+			url: `${firebase.getFBsettings().databaseURL}/movies.json?orderBy="uid"&equalTo="${user.getUser()}"`,
+		}).done( function(data) {
+			console.log(data, "data", newMovies, "newMovies");
+			for(let m in newMovies) {
+				for(let d in data) {
+					if(data[d].movieId == newMovies[m].id) {
+						newMovies.splice(m, 1);
+						break;
+					}
+				}
+			}
+			resolve(newMovies);
+		});
+	});
+}
+
 module.exports = {
   getMovies,//query movie db api
   getNewMoviesCredits, //query movie db for actors
   getMyMovies,//query firebase
   addMovie,//add to watchlist
   deleteMovie, //delete from firebase
-  setRating};
+  setRating,
+  compareMovies};
 
 
 
