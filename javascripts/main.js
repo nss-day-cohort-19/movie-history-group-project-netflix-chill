@@ -6,7 +6,8 @@ let $ = require('jquery'),
     ds = require("./data-station"),
     DOM = require("./DOM-builder"),
     dataStation = require("./data-station"),
-    user = require("./user");
+    user = require("./user"),
+    rate = require('./rating');
 
 function loadMoviesToDom (movieData) {
 	console.log("loading movies");
@@ -26,7 +27,7 @@ $("#input").keyup(function(e) {
 	if (e.keyCode === 13){
 		dataStation.getMovies()
 		.then(function(movieData){
-			DOM.matchMovies(movieData);
+        DOM.matchMovies(movieData);
 		});
 	}
 });
@@ -55,9 +56,14 @@ $("#logout").click(function(){
  });
 $('#thingsToHide').hide();
 
-
-
-
+$(document).on('click', '.star', function(e) {
+    // console.log(e.target);
+    rate.starStuff(e.target);
+});
+$(document).on('click', '.unwatched', function(event) {
+    // console.log(e.target);
+    rate.addStars(event);
+});
 
 
 module.exports = {loadMoviesToDom};
