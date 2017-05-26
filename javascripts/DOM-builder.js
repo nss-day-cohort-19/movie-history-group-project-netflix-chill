@@ -8,28 +8,28 @@ let $ = require('jquery'),
 function matchMovies(movieList) {
 	let mainDiv = $(".container");
 	var actors = {};
+	function parseActors (data) {
+		var actorObj = {};
+			for(let j = 0; j < 3; j++) {
+				if(data.cast[j]){
+					let d = data.cast[j]; //i like to shorten this kind of stuff
+					actorObj[j] = {"part": d.character, "name": d.name};
+				}
+			}
+			for (var prop in actorObj) {
+				if (actorObj[prop] !== undefined) {
+						actors[data.id] = actorObj;
+				}
+
+			}
+			if(data.id == movieList[i - 1].id) {
+				matchActors(actors, movieList);
+			}
+	}
 	for (var i = 0; i < movieList.length; i++){
 		dataStation.getNewMoviesCredits(movieList[i].id).
 		then(
-			(data) => {
-				var actorObj = {};
-				for(let j = 0; j < 3; j++) {
-					if(data.cast[j]){
-						let d = data.cast[j]; //i like to shorten this kind of stuff
-						actorObj[j] = {"part": d.character, "name": d.name};
-					}
-				}
-				for (var prop in actorObj) {
-					if (actorObj[prop] !== undefined) {
-							actors[data.id] = actorObj;
-					}
-
-				}
-				if(data.id == movieList[i - 1].id) {
-						matchActors(actors, movieList);
-					}
-			},
-			() => {console.log("error");}
+			parseActors
 		);
   }
 }
