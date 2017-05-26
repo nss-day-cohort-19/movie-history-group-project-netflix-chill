@@ -1,5 +1,4 @@
 "use strict";
-console.log("data-station.js");
 // This module has no knowledge of the DOM, or where the data goes after it is fetched from Firebase.
 // It is only concerned with getting and setting data in the db
 
@@ -60,7 +59,6 @@ function getMyMovies() {
 }
 
 function addMovie(movieObj) {
-	console.log("add movie", movieObj);
 	return new Promise(function(resolve, reject){
 		$.ajax({
 			url:`${firebase.getFBsettings().databaseURL}/movies.json`,
@@ -78,7 +76,7 @@ function addMovie(movieObj) {
 function deleteMovie(movieId) {
 	return new Promise(function(resolve, reject){
 		$.ajax({
-			url:`${firebase.getFBsettings().databaseURL}/songs/${movieId}.json`,
+			url:`${firebase.getFBsettings().databaseURL}/movies/${movieId}.json`,
 			method:'DELETE'
 		}).done(function(){
 			resolve();//resolve goes to delete when delete button is clicked
@@ -119,7 +117,6 @@ function compareMovies(newMovies) {
 		$.ajax({
 			url: `${firebase.getFBsettings().databaseURL}/movies.json?orderBy="uid"&equalTo="${user.getUser()}"`,
 		}).done( function(data) {
-			console.log(data, "data", newMovies, "newMovies");
 			for(let m in newMovies) {
 				for(let d in data) {
 					if(data[d].movieId == newMovies[m].id) {
