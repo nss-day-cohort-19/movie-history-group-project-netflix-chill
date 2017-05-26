@@ -1,0 +1,93 @@
+
+
+// Rating Styling
+.rating > span:hover:before {
+   content: "\2605";
+   position: absolute;
+   color: gold;
+}
+.rating {
+  unicode-bidi: bidi-override;
+  direction: rtl;
+}
+.rating > span:hover:before,
+.rating > span:hover ~ span:before {
+   content: "\2605";
+   position: absolute;
+   color: gold;
+}
+.ratedStar {
+  color: gold;
+}
+
+.unwatched {
+  cursor: pointer;
+}
+// end Rating Styling
+
+// navbar
+#searchNav {
+	// width: 1200px;
+	// margin: 30px 0 0 100px;
+	.nav-wrapper {
+  		background-color: #102031;
+}
+}
+#welcome {
+	margin: 30px 138px 0 100px;
+	padding: 100px 20px;
+	text-align: center;
+
+}
+.card-panel {
+	background-color: #102031;
+	color: #01C46D;
+	border-radius: 10px;
+}
+.dropdown-button {
+	// margin: -60px 40px 0 0;
+	padding-right: 1em;
+	cursor: pointer;
+	color: #01C46D;
+}
+.dropdown-content li>a, .dropdown-content li>span {
+	color: #000;
+	font-weight: 900;
+}
+//body
+.trackTabs {
+	margin: 30px 0 10px 330px;
+}
+#mainContainer {
+	margin-left: 28%;
+}
+.tabs .tab a {
+	color: #102031;
+	cursor: pointer;
+}
+.tabs .tab a:hover, .tabs .tab a.active {
+	color: #01C46D;
+}
+.range-field {
+	padding-right: 13%;
+}
+.tabs .indicator {
+	background-color: #01C46D;
+}
+.containers {
+	position: relative;
+}
+.cardImages {
+	width: 300px;
+	height: 480px;
+}
+li {
+ 	list-style-type: none;
+}
+footer.page-footer {
+	background-color: #686F7F;
+	p {
+		color: #fff;
+	}
+}
+
