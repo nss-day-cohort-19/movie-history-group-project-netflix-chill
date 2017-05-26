@@ -19,41 +19,45 @@ function matchMovies(movieList) {
 						actorObj[j] = {"part": d.character, "name": d.name};
 					}
 				}
-				actors[data.id] = actorObj;
-				if(data.id == movieList[i - 1].id) {
-					matchActors(actors, movieList);
+				for (var prop in actorObj) {
+					if (actorObj[prop] !== undefined) {
+							actors[data.id] = actorObj;
+					}
+
 				}
+				if(data.id == movieList[i - 1].id) {
+						matchActors(actors, movieList);
+					}
 			},
 			() => {console.log("error");}
 		);
   }
 }
 
+function matchActors(actors, movies) {
+	for(let m = 0; m < movies.length; m++) {
+		movies[m].actorList = actors[movies[m].id];
+	}
+  showSearchedMovies(movies);
+}
 function showSearchedMovies (movieList) {
-	console.log("showSearchedMovies", movieList.length);
-	  let mainDiv = $(".container");
+	// console.log("showSearchedMovies", movieList.length);
+	  let mainDiv = $(".containers");
 	  let actorArray = [];
 	  for (var i = 0; i < movieList.length; i++){
-			if (movieList[i].poster_path !== null) {
+			if (movieList[i].actorList !== undefined && movieList[i].poster_path !== null){
 				mainDiv.append(`<div class="col lg2 m4 s6">
 												<div class="card">
 												<div class="card-image"> <span> <div class="chip right"> <i class="close material-icons">close</i> </div> </span> <img class="cardImages" src="http://image.tmdb.org/t/p/w342/${movieList[i].poster_path}" alt="{{title}}"> </div>
 												<div class="card-content">
 												<li>${movieList[i].title}</li>
 												<li>${movieList[i].release_date}</li>
-												<a class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">add</i></a> </div>
+												<li>${movieList[i].actorList[0].name} ${movieList[i].actorList[1].name}</li>
+												<a class="btn-floating halfway-fab waves-effect waves-light"><i class="material-icons">add</i></a> </div>
 												</div>`);
 			  actorArray.push(`${movieList[i].id}`);
 			}
 	}
-}
-
-function matchActors(actors, movies) {
-	for(let m = 0; m < movies.length; m++) {
-		movies[m].actorList = actors[movies[m].id];
-	}
-	console.log(movies);
-  showSearchedMovies(movies);
 }
 
 module.exports = {matchMovies};
