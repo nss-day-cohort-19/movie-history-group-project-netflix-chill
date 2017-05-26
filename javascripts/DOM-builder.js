@@ -47,8 +47,8 @@ function matchActors(actors, movies) {
 function showSearchedMovies (movieList) {
 
 	// console.log("showSearchedMovies", movieList.length);
-
-	  let mainDiv = $(".containers");
+	  let mainDiv = $("#display");
+	  mainDiv.html("");
 	  let actorArray = [];
 	  for (var i = 0; i < movieList.length; i++){
 			if (movieList[i].actorList !== undefined && movieList[i].poster_path !== null){
@@ -76,7 +76,7 @@ function showSearchedMovies (movieList) {
 function showUserMovies(data) {
 	console.log(data);
 	let mainDiv = $(".containers");
-	mainDiv.html();
+	mainDiv.html("");
 	for(let i in data) {
 
 		mainDiv.append(`<div class="col lg2 m4 s6 deleter">
