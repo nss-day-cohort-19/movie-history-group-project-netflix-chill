@@ -107,18 +107,50 @@ function showWatchedMovies(data) {
 
 	for(let i in data) {
 		if(data[i].watched) {
-			mainDiv.append(`<div class="col lg2 m4 s6 deleter">
+			let htmlHolder = `<div class="col lg2 m4 s6 deleter">
 											<div class="card">
 											<div class="card-image"> <span> <div class="chip right"> <i class="close material-icons">close</i> </div> </span> <img class="cardImages" src="http://image.tmdb.org/t/p/w342/${data[i].picture}" alt="{{title}}"> </div>
 											<div class="card-content">
 											<li>${data[i].name}</li>
 											<li>${data[i].year}</li>
 											<li>${data[i].actors}</li>
-											<div class="rating" data-i= "${i}">
-											
+											<div class="rating" data-i= "${i}">`;
+			switch (data[i].rating) {
+				case 1:
+					htmlHolder += `${rate.rater.oneStarRating}`;
+					break;
+				case 2:
+					htmlHolder += `${rate.rater.twoStarRating}`;
+					break;
+				case 3:
+					htmlHolder += `${rate.rater.threeStarRating}`;
+					break;
+				case 4:
+					htmlHolder += `${rate.rater.fourStarRating}`;
+					break;
+				case 5:
+					htmlHolder += `${rate.rater.fiveStarRating}`;
+					break;
+				case 6:
+					htmlHolder += `${rate.rater.sixStarRating}`;
+					break;
+				case 7:
+					htmlHolder += `${rate.rater.sevenStarRating}`;
+					break;
+				case 8:
+					htmlHolder += `${rate.rater.eightStarRating}`;
+					break;
+				case 9:
+					htmlHolder += `${rate.rater.nineStarRating}`;
+					break;
+				case 10:
+					htmlHolder += `${rate.rater.tenStarRating}`;
+					break;
+			}			
+				htmlHolder +=	`</div>
 											</div>
-											</div>
-											</div>`);
+											</div>`;
+				mainDiv.append(htmlHolder);
 		}
 
 	}
