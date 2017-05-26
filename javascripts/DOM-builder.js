@@ -42,7 +42,9 @@ function matchActors(actors, movies) {
   showSearchedMovies(movies);
 }
 function showSearchedMovies (movieList) {
+
 	// console.log("showSearchedMovies", movieList.length);
+
 	  let mainDiv = $(".containers");
 	  let actorArray = [];
 	  for (var i = 0; i < movieList.length; i++){
@@ -59,7 +61,9 @@ function showSearchedMovies (movieList) {
 												<li>${movieList[i].title}</li>
 												<li>${movieList[i].release_date}</li>
 												<li>${actorString}</li>
-												<a class="btn-floating halfway-fab waves-effect waves-light"><i class="material-icons">add</i></a> </div>
+                        <div id="watchlistDiv">
+													<a class="unwatched">Add to Watchlist</a>
+												</div>
 												</div>`);
 			  actorArray.push(`${movieList[i].id}`);
 			}
