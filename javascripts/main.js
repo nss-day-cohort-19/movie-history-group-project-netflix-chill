@@ -16,15 +16,16 @@ function loadMoviesToDom (movieData) {
 
 function buildMovieObj(id) {
     let movieObj = {
-    name: $(id).data("title"),
-    actors: $(id).data("actors"),
-    year: $(id).data("year"),
-    picture: $(id).data("picture"),
+    name: id.data("title"),
+    actors: id.data("actors"),
+    year: id.data("year"),
+    picture: id.data("picture"),
     watched: false,
     rating: 0,
     uid: user.getUser(),
-    movieId: $(id).data("id")
+    movieId: id.data("id")
   };
+  console.log(movieObj);
   return movieObj;
 }
 
@@ -73,19 +74,16 @@ $(".delete-btn").on("click", (event) => {
 	then( /*Load movies to dom again */);
 });
 
-$(".addToList").on("click", (event) => {
-	let movie = buildMovieObj($(this).data("id"));
-	dataStation.addMovie(movie).
-	then( /*Load movies to dom again */);
-});
 
 $(document).on('click', '.star', function(e) {
     // console.log(e.target);
     rate.starStuff(e.target);
 });
 $(document).on('click', '.unwatched', function(event) {
-    // console.log(e.target);
-    rate.addStars(event);
+    let movie = buildMovieObj($(this));
+	rate.addStars(event);
+	dataStation.addMovie(movie).
+	then( /*Load movies to dom again */);
 });
 
 

@@ -62,7 +62,7 @@ function showSearchedMovies (movieList) {
 												<li>${movieList[i].release_date}</li>
 												<li>${actorString}</li>
                         <div id="watchlistDiv">
-													<a class="unwatched">Add to Watchlist</a>
+													<a class="unwatched" data-title= "${movieList[i].title}" data-actors= "${actorString}" data-year= "${movieList[i].release_date}" data-picture= "${movieList[i].poster_path}" data-id= ${movieList[i].id}>Add to Watchlist</a>
 												</div>
 												</div>`);
 			  actorArray.push(`${movieList[i].id}`);
