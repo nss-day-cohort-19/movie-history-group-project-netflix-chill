@@ -92,3 +92,10 @@ $(document).on('click', '#showUnwatched', function(){
     }
     );
 });
+$(document).on('click', '#showWatched', function(){
+    dataStation.getMyMovies().then(function(data) {
+        return DOM.showWatchedMovies(data);
+    }
+    );
+});
+
