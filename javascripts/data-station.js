@@ -47,7 +47,7 @@ function getNewMoviesCredits(movieId) {
 }
 
 //get my movies from firebase
-function getMyMovies(user, searchVal) {
+function getMyMovies(user) {
 	return new Promise(function(resolve,reject){
 		$.ajax({
 			url:`${firebase.getFBsettings().databaseURL}/movies.json?orderBy="uid"&equalTo="${user}"`
