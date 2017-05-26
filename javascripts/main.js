@@ -82,7 +82,7 @@ $(document).on('click', '.unwatched', function(event) {
 	// then( /*Load movies to dom again */);
 });
 $(document).on('click', '#showUnwatched', function(){
-    dataStation.getMyMovies(user.getUser()).then(function(data) {
+    dataStation.getMyMovies().then(function(data) {
         return DOM.showUserMovies(data);
     }
     );
