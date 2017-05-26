@@ -1,22 +1,64 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-	<title>Netflix & Chill</title>
-	<link rel="stylesheet" href="lib/node_modules/materialize-css/dist/css/materialize.min.css">
-  	<link rel="stylesheet" href="css/main.css">
+    <title>Netflix & Chill</title>
+    <link rel="stylesheet" href="lib/node_modules/materialize-css/dist/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="css/main.css">
 </head>
+
 <body>
-		<nav class="navbar">
-			<input type="text" id="input" name="inputbox" placeholder="Search Movies">
-			<a href="#">Find New Movies</a>
-		</nav>
-
-		<div class="container">
-
-		</div>
-
-
-
-		<script type='text/javascript' src='dist/app.js'></script>
+    <div id="megaWrapper">
+        <nav id="searchNav">
+            <div class="nav-wrapper row">
+                <div class="input-field col s7">
+                    <input id="input" type="search" required>
+                    <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+                    </div><div>
+                   <!--  <i class="material-icons">close</i> -->
+                    <i class="medium material-icons dropdown-button right" data-activates='dropdown1'>perm_identity</i>
+        <ul id='dropdown1' class='dropdown-content'>
+            <li id="auth-btn"><a href="#!">Log in</a></li>
+            <li id="logout"><a href="#!">Log out</a></li>
+        </ul></div>
+                </div>
+            </div>
+        </nav>
+        
+        <div id="welcome" class="col s12 m5">
+            <div class="card-panel">
+                <span><h4>Welcome to movie history</h4></span>
+            </div>
+        </div>
+        <div id="thingsToHide">
+            <div class="col s12 center">
+                <ul class="tabs row trackTabs ">
+                    <li class="tab col m2"><a>Show Untracked</a></li>
+                    <li class="tab col m2"><a>Show Unwatched</a></li>
+                    <li class="tab col m2"><a>Show Watched</a></li>
+                </ul>
+          </div>
+                <!--rating bar scroller -->
+                <form action="#">
+                    <p class="range-field row">
+                        <input class="col s8" type="range" id="ratingSlider" min="1" max="11" />
+                    </p>
+                </form>
+            </div>
+            <div class="container">
+            	<div class="containers row"></div>
+            </div>
+        </div>
+    </div>
+    <footer class="page-footer">
+            <div class="container center">
+				<p>© 2017 Boring Company</p>
+            </div>
+	</footer>
+    <script type='text/javascript' src='lib/node_modules/jquery/dist/jquery.min.js'></script>
+    <script type='text/javascript' src='lib/node_modules/materialize-css/dist/js/materialize.min.js'></script>
+    <script type='text/javascript' src='dist/app.js'></script>
 </body>
+
 </html>
