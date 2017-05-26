@@ -38,6 +38,7 @@ function matchActors(actors, movies) {
 	for(let m = 0; m < movies.length; m++) {
 		movies[m].actorList = actors[movies[m].id];
 	}
+	console.log(movies);
   showSearchedMovies(movies);
 }
 function showSearchedMovies (movieList) {
@@ -46,13 +47,18 @@ function showSearchedMovies (movieList) {
 	  let actorArray = [];
 	  for (var i = 0; i < movieList.length; i++){
 			if (movieList[i].actorList !== undefined && movieList[i].poster_path !== null){
+				let actorString = "";
+				for(let j in movieList[i].actorList) {
+					actorString += movieList[i].actorList[j].name + ", ";
+				}
+				actorString = actorString.slice(0, -2);
 				mainDiv.append(`<div class="col lg2 m4 s6">
 												<div class="card">
 												<div class="card-image"> <span> <div class="chip right"> <i class="close material-icons">close</i> </div> </span> <img class="cardImages" src="http://image.tmdb.org/t/p/w342/${movieList[i].poster_path}" alt="{{title}}"> </div>
 												<div class="card-content">
 												<li>${movieList[i].title}</li>
 												<li>${movieList[i].release_date}</li>
-												<li>${movieList[i].actorList[0].name} ${movieList[i].actorList[1].name}</li>
+												<li>${actorString}</li>
 												<a class="btn-floating halfway-fab waves-effect waves-light"><i class="material-icons">add</i></a> </div>
 												</div>`);
 			  actorArray.push(`${movieList[i].id}`);
