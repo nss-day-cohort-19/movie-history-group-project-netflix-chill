@@ -1,41 +1,68 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-	<title>Netflix & Chill</title>
-	<link rel="stylesheet" href="lib/node_modules/materialize-css/dist/css/materialize.min.css">
-  	<link href=“https://fonts.googleapis.com/icon?family=Material+Icons” rel=“stylesheet”>
-  	<link rel="stylesheet" href="css/main.css">
+    <title>Netflix & Chill</title>
+    <link rel="stylesheet" href="lib/node_modules/materialize-css/dist/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="css/main.css">
 </head>
+
 <body>
-		<nav class="navbar row">
-			<input class="col s7 offset-s1" type="text" id="input" name="inputbox" placeholder="Search Movies">
-			<div class="col 2s" id="auth-btn"><a href="#" title="">LogIn</a></div>
-          	<div  class="hide" id="logout"><a href="#" title="">LogOut</a></div>
-		</nav>
-    <div class="col s12">
-		<ul class="tabs row">
-		  <li class="tab col m2"><a>Show Untracked</a></li>
-		  <li class="tab col m2"><a>Show Unwatched</a></li>
-		  <li class="tab col m2"><a>Show Watched</a></li>
-		</ul>
+    <div id="megaWrapper">
+        <nav id="searchNav">
+            <div class="nav-wrapper">
+                <div class="input-field">
+                    <input id="input" type="search" required>
+                    <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+                    <i class="material-icons">close</i>
+                </div>
+            </div>
+        </nav>
+        <i class="medium material-icons dropdown-button right" data-activates='dropdown1'>perm_identity</i>
+        <ul id='dropdown1' class='dropdown-content'>
+            <li id="auth-btn"><a href="#!">Log in</a></li>
+            <li id="logout"><a href="#!">Log out</a></li>
+        </ul>
+        <div id="welcome" class="col s12 m5">
+            <div class="card-panel">
+                <span><h4>Welcome to movie history</h4></span>
+            </div>
+        </div>
+        <div id="thingsToHide">
+            <div class="col s12 center">
+                <ul class="tabs row trackTabs ">
+                    <li class="tab col m2"><a>Show Untracked</a></li>
+                    <li class="tab col m2"><a>Show Unwatched</a></li>
+                    <li class="tab col m2"><a>Show Watched</a></li>
+                </ul>
+            </div>
+            <div id="mainContainer" class="container">
+                <div class="row mainBtn">
+                    <a id="untracked" class="waves-effect waves-light btn">Show Untracked</a>
+                    <a id="unwatched" class="waves-effect waves-light btn">Show Unwatched</a>
+                    <a id="watched" class="waves-effect waves-light btn">Show Watched</a>
+                </div>
+                <!--rating bar scroller -->
+                <form action="#">
+                    <p class="range-field row">
+                        <input class="col s8" type="range" id="ratingSlider" min="1" max="11" />
+                    </p>
+                </form>
+            </div>
+            <div class="container">
+            	<div class="containers row"></div>
+            </div>
+        </div>
     </div>
-		<div id="welcome"><h1>Welcome to this movie history thing we made</h1></div>
-			<div id="mainContainer" class="container hide">
-				<div class="row">
-					<a id="untracked" class="waves-effect waves-light btn red">Show Untracked</a>
-					<a id="unwatched" class="waves-effect waves-light btn red">Show Unwatched</a>
-					<a id="watched" class="waves-effect waves-light btn red">Show Watched</a>
-			</div>
-			  <div class="containers row"></div>
-		</div>
-		<!--rating bar scroller -->
-			<form action="#">
-				<p class="range-field row">
-					<input class="col s8" type="range" id="ratingSlider" min="1" max="11" />
-				</p>
-			</form>
-		<script type='text/javascript' src='lib/node_modules/jquery/dist/jquery.min.js'></script>
-		<script type='text/javascript' src='lib/node_modules/materialize-css/dist/js/materialize.min.js'></script>
-		<script type='text/javascript' src='dist/app.js'></script>
+    <footer class="page-footer">
+            <div class="container center">
+				<p>© 2017 Boring Company</p>
+            </div>
+	</footer>
+    <script type='text/javascript' src='lib/node_modules/jquery/dist/jquery.min.js'></script>
+    <script type='text/javascript' src='lib/node_modules/materialize-css/dist/js/materialize.min.js'></script>
+    <script type='text/javascript' src='dist/app.js'></script>
 </body>
+
 </html>

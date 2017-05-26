@@ -19,35 +19,19 @@ function matchMovies(movieList) {
 						actorObj[j] = {"part": d.character, "name": d.name};
 					}
 				}
-				actors[data.id] = actorObj;
-				if(data.id == movieList[i - 1].id) {
-					matchActors(actors, movieList);
+				for (var prop in actorObj) {
+					if (actorObj[prop] !== undefined) {
+							actors[data.id] = actorObj;
+					}
+
 				}
+				if(data.id == movieList[i - 1].id) {
+						matchActors(actors, movieList);
+					}
 			},
 			() => {console.log("error");}
 		);
   }
-}
-
-function showSearchedMovies (movieList) {
-	console.log("showSearchedMovies", movieList.length);
-	  let mainDiv = $(".containers");
-	  let actorArray = [];
-	  for (var i = 0; i < movieList.length; i++){
-			if (movieList[i].poster_path !== null) {
-				mainDiv.append(`<div class="col lg2 m4 s6">
-												<div class="card">
-												<div class="card-image"> <span> <div class="chip right"> <i class="close material-icons">close</i> </div> </span> <img class="cardImages" src="http://image.tmdb.org/t/p/w342/${movieList[i].poster_path}" alt="{{title}}"> </div>
-												<div class="card-content">
-												<li>${movieList[i].title}</li>
-												<li>${movieList[i].release_date}</li>
-												<div id="watchlistDiv">
-													<a class="unwatched">Add to Watchlist</a>
-												</div>
-												</div>`);
-			  actorArray.push(`${movieList[i].id}`);
-			}
-	}
 }
 
 function matchActors(actors, movies) {
@@ -56,6 +40,34 @@ function matchActors(actors, movies) {
 	}
 	console.log(movies);
   showSearchedMovies(movies);
+}
+function showSearchedMovies (movieList) {
+
+	// console.log("showSearchedMovies", movieList.length);
+
+	  let mainDiv = $(".containers");
+	  let actorArray = [];
+	  for (var i = 0; i < movieList.length; i++){
+			if (movieList[i].actorList !== undefined && movieList[i].poster_path !== null){
+				let actorString = "";
+				for(let j in movieList[i].actorList) {
+					actorString += movieList[i].actorList[j].name + ", ";
+				}
+				actorString = actorString.slice(0, -2);
+				mainDiv.append(`<div class="col lg2 m4 s6">
+												<div class="card">
+												<div class="card-image"> <span> <div class="chip right"> <i class="close material-icons">close</i> </div> </span> <img class="cardImages" src="http://image.tmdb.org/t/p/w342/${movieList[i].poster_path}" alt="{{title}}"> </div>
+												<div class="card-content">
+												<li>${movieList[i].title}</li>
+												<li>${movieList[i].release_date}</li>
+												<li>${actorString}</li>
+                        <div id="watchlistDiv">
+													<a class="unwatched">Add to Watchlist</a>
+												</div>
+												</div>`);
+			  actorArray.push(`${movieList[i].id}`);
+			}
+	}
 }
 
 module.exports = {matchMovies};

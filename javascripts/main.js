@@ -40,10 +40,8 @@ $("#auth-btn").click(function(){
     user.setUser(result.user.uid);
     //let currentUser = user.getUser();
     //loadMoviesToDom(currentUser);
-    $("#mainContainer").removeClass("hide");
-    $("#auth-btn").addClass("hide");
-    $("#logout").removeClass("hide");
-
+    $('#thingsToHide').show();
+    $('#welcome').hide();
   });
 });
 
@@ -52,11 +50,11 @@ $("#logout").click(function(){
    user.logOut()
    .then(function(result){
      console.log("you have logged out");
-     $("#auth-btn").removeClass("hide");
-     $("#logout").addClass("hide");
-     $("#mainContainer").addClass("hide");
+     $('#thingsToHide').hide();
+     $('#welcome').show();
    });
  });
+$('#thingsToHide').hide();
 
 $(document).on('click', '.star', function(e) {
     // console.log(e.target);
