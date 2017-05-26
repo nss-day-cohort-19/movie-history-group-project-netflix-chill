@@ -76,6 +76,14 @@ $(document).on('click', '.unwatched', function(event) {
 $(document).on('click', '#showUnwatched', function(){
     showMyMovies();
 });
+
+$(document).on('click', '#showWatched', function(){
+    dataStation.getMyMovies().then(function(data) {
+        return DOM.showWatchedMovies(data);
+    }
+    );
+});
+
 $(document).on('click', '#showUntracked', function(){
     $("#display").html("");
     dataStation.getMovies()
@@ -89,3 +97,4 @@ function showMyMovies() {
         return DOM.showUserMovies(data);
     });
 }
+

@@ -10,7 +10,6 @@ let $ = require('jquery'),
 	movieKey = key.getMovieKey(),
 	user = require("./user"),
 	apiKey = movieKey.apiKey,
-	user = require('./user'),
 	databaseURL = movieKey.databaseURL;
 
 
