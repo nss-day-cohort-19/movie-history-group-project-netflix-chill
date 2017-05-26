@@ -39,17 +39,13 @@ function matchActors(actors, movies) {
 	for(let m = 0; m < movies.length; m++) {
 		movies[m].actorList = actors[movies[m].id];
 	}
-	console.log(movies);
 	dataStation.compareMovies(movies).
 	then(
   		showSearchedMovies
   	);
 }
 function showSearchedMovies (movieList) {
-
-	// console.log("showSearchedMovies", movieList.length);
 	  let mainDiv = $("#display");
-	  mainDiv.html("");
 	  let actorArray = [];
 	  for (var i = 0; i < movieList.length; i++){
 			if (movieList[i].actorList !== undefined && movieList[i].poster_path !== null){
@@ -60,7 +56,7 @@ function showSearchedMovies (movieList) {
 				actorString = actorString.slice(0, -2);
 				mainDiv.append(`<div class="col lg2 m4 s6 deleter">
 												<div class="card">
-												<div class="card-image"> <span> <div class="chip right"> <i class="close material-icons">close</i> </div> </span> <img class="cardImages" src="http://image.tmdb.org/t/p/w342/${movieList[i].poster_path}" alt="{{title}}"> </div>
+												<div class="card-image"><img class="cardImages" src="http://image.tmdb.org/t/p/w342/${movieList[i].poster_path}" alt="{{title}}"> </div>
 												<div class="card-content">
 												<li>${movieList[i].title}</li>
 												<li>${movieList[i].release_date}</li>
@@ -75,7 +71,6 @@ function showSearchedMovies (movieList) {
 }
 
 function showUserMovies(data) {
-	console.log(data);
 	let mainDiv = $(".containers");
 	mainDiv.html("");
 	for(let i in data) {
@@ -109,6 +104,7 @@ function showWatchedMovies(data) {
 	let mainDiv = $(".containers");
 	mainDiv.html("");
 
+
 	for(let i in data) {
 		if(data[i].watched) {
 			mainDiv.append(`<div class="col lg2 m4 s6 deleter">
@@ -124,6 +120,7 @@ function showWatchedMovies(data) {
 											</div>
 											</div>`);
 		}
+
 	}
 }
 

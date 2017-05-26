@@ -1,6 +1,6 @@
 "use strict";
 
-console.log("main.js");
+
 
 let $ = require('jquery'),
     ds = require("./data-station"),
@@ -20,16 +20,8 @@ function buildMovieObj(id) {
     uid: user.getUser(),
     movieId: id.data("id")
   };
-  console.log(movieObj);
-  return movieObj;
+    return movieObj;
 }
-
-$("#untracked").click( () => {
-	dataStation.getMovies()
-	.then(function(movieData){
-		DOM.matchMovies(movieData);
-	});
-});
 
 $("#input").keyup(function(e) {
 	if (e.keyCode === 13){
@@ -41,10 +33,8 @@ $("#input").keyup(function(e) {
 });
 
 $("#auth-btn").click(function(){
-  console.log("clicked on auth-btn");
   user.logInGoogle()
   .then(function(result){
-    console.log("result from login", result.user.uid);
     user.setUser(result.user.uid);
     //let currentUser = user.getUser();
     //loadMoviesToDom(currentUser);
@@ -54,24 +44,21 @@ $("#auth-btn").click(function(){
 });
 
 $("#logout").click(function(){
-   console.log("clicked logout button");
    user.logOut()
    .then(function(result){
-     console.log("you have logged out");
      $('#thingsToHide').hide();
      $('#welcome').show();
    });
  });
 $('#thingsToHide').hide();
 
-$(".delete-btn").on("click", (event) => {
-	dataStation.deleteMovie($(this).data("delete-id")).
-	then( /*Load movies to dom again */);
+$(document).on('click', '.delete-btn', function(event) {
+	dataStation.deleteMovie($(this).data("i")).
+	then( showMyMovies);
 });
 
 
 $(document).on('click', '.star', function(event) {
-
     let movie = {};
     let movieId = $(this).closest('div').data('i');
     movie.watched = true;
@@ -87,15 +74,27 @@ $(document).on('click', '.unwatched', function(event) {
 	// then( /*Load movies to dom again */);
 });
 $(document).on('click', '#showUnwatched', function(){
-    dataStation.getMyMovies().then(function(data) {
-        return DOM.showUserMovies(data);
-    }
-    );
+    showMyMovies();
 });
+
 $(document).on('click', '#showWatched', function(){
     dataStation.getMyMovies().then(function(data) {
         return DOM.showWatchedMovies(data);
     }
     );
 });
+
+$(document).on('click', '#showUntracked', function(){
+    $("#display").html("");
+    dataStation.getMovies()
+	.then(function(movieData){
+    DOM.matchMovies(movieData);
+	});
+});
+
+function showMyMovies() {
+	dataStation.getMyMovies().then(function(data) {
+        return DOM.showUserMovies(data);
+    });
+}
 
