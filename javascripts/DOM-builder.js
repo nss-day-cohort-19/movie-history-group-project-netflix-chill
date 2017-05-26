@@ -54,7 +54,7 @@ function showSearchedMovies (movieList) {
 					actorString += movieList[i].actorList[j].name + ", ";
 				}
 				actorString = actorString.slice(0, -2);
-				mainDiv.append(`<div class="col lg2 m4 s6">
+				mainDiv.append(`<div class="col lg2 m4 s6 deleter">
 												<div class="card">
 												<div class="card-image"> <span> <div class="chip right"> <i class="close material-icons">close</i> </div> </span> <img class="cardImages" src="http://image.tmdb.org/t/p/w342/${movieList[i].poster_path}" alt="{{title}}"> </div>
 												<div class="card-content">
@@ -70,4 +70,34 @@ function showSearchedMovies (movieList) {
 	}
 }
 
-module.exports = {matchMovies};
+function showUserMovies(data) {
+	console.log(data);
+	let mainDiv = $(".containers");
+	mainDiv.html();
+	for(let i in data) {
+
+		mainDiv.append(`<div class="col lg2 m4 s6 deleter">
+										<div class="card">
+										<div class="card-image"> <span> <div class="chip right"> <i class="close material-icons">close</i> </div> </span> <img class="cardImages" src="http://image.tmdb.org/t/p/w342/${data[i].picture}" alt="{{title}}"> </div>
+										<div class="card-content">
+										<li>${data[i].name}</li>
+										<li>${data[i].year}</li>
+										<li>${data[i].actors}</li>
+										<div class="rating" data-title= "${data[i].name}" data-actors= "${data[i].actors}" data-year= "${data[i].year}" data-picture= "${data[i].picture}" data-id= ${data[i].id}>
+										<span class="star" id="tenStar">☆</span>
+                    <span class="star" id="nineStar">☆</span>
+                    <span class="star" id="eightStar">☆</span>
+                    <span class="star" id="sevenStar">☆</span>
+                    <span class="star" id="sixStar">☆</span>
+                    <span class="star" id="fiveStar">☆</span>
+                    <span class="star" id="fourStar">☆</span>
+                    <span class="star" id="threeStar">☆</span>
+                    <span class="star" id="twoStar">☆</span>
+                    <span class="star" id="oneStar">☆</span>
+										</div>
+										</div>
+										</div>`);
+	}
+}
+
+module.exports = {matchMovies, showUserMovies};

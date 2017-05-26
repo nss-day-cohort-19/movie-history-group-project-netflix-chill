@@ -75,15 +75,22 @@ $(".delete-btn").on("click", (event) => {
 });
 
 
-$(document).on('click', '.star', function(e) {
+$(document).on('click', '.star', function(event) {
     // console.log(e.target);
-    rate.starStuff(e.target);
+    rate.starStuff();
 });
 $(document).on('click', '.unwatched', function(event) {
     let movie = buildMovieObj($(this));
-	rate.addStars(event);
-	dataStation.addMovie(movie).
-	then( /*Load movies to dom again */);
+	// rate.addStars(event);
+	dataStation.addMovie(movie);
+    $(event.target).closest('.deleter').remove();
+	// then( /*Load movies to dom again */);
+});
+$(document).on('click', '#showUnwatched', function(){
+    dataStation.getMyMovies(user.getUser()).then(function(data) {
+        return DOM.showUserMovies(data);
+    }
+    );
 });
 
 
